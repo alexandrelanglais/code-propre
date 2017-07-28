@@ -13,12 +13,12 @@ public class AppEncoreMieux {
     private static final String CLOSING_TAG = "</title>";
 
     public static void main(String[] args) throws IOException {
-        String codeHtml = recupereLeCodeHtmlDepuis(THE_URL);
-        String leTitre = extraitLeTitreDeLaPageWeb(codeHtml);
-        afficheMoi(leTitre);
+        String htmlCode = retrieveHtmlCodeFrom(THE_URL);
+        String theTitle = extractTitleFromHtml(htmlCode);
+        showMe(theTitle);
     }
 
-    private static String recupereLeCodeHtmlDepuis(String theUrl) throws IOException {
+    private static String retrieveHtmlCodeFrom(String theUrl) throws IOException {
         URL url = new URL(THE_URL);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
         String line = null;
@@ -31,7 +31,7 @@ public class AppEncoreMieux {
         return rawHtml.toString();
     }
 
-    private static String extraitLeTitreDeLaPageWeb(String rawHtml) {
+    private static String extractTitleFromHtml(String rawHtml) {
         String title = "";
         Pattern pattern = Pattern.compile(OPENING_TAG + "(.*)" + CLOSING_TAG);
         Matcher matcher = pattern.matcher(rawHtml);
@@ -41,7 +41,7 @@ public class AppEncoreMieux {
         return title;
     }
 
-    private static void afficheMoi(String cela) {
-        System.out.println(cela);
+    private static void showMe(String that) {
+        System.out.println(that);
     }
 }
