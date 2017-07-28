@@ -18,13 +18,14 @@ public class AppEncoreMieux {
         showMe(theTitle);
     }
 
+    // J'ai besoin du code HTML de la page pour pouvoir en extraire le titre
     private static String retrieveHtmlCodeFrom(String theUrl) throws IOException {
         URL url = new URL(THE_URL);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
         String line = null;
         StringBuilder rawHtml = new StringBuilder();
 
-        while( (line = bufferedReader.readLine()) != null) {
+        while ((line = bufferedReader.readLine()) != null) {
             rawHtml.append(line);
         }
 
@@ -35,7 +36,7 @@ public class AppEncoreMieux {
         String title = "";
         Pattern pattern = Pattern.compile(OPENING_TAG + "(.*)" + CLOSING_TAG);
         Matcher matcher = pattern.matcher(rawHtml);
-        if(matcher.find()) {
+        if (matcher.find()) {
             title = matcher.group(1);
         }
         return title;

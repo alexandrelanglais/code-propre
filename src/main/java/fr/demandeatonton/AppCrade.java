@@ -18,7 +18,7 @@ public class AppCrade {
         String c = null;
         StringBuilder d = new StringBuilder();
 
-        while( (c = b.readLine()) != null) {
+        while ((c = b.readLine()) != null) {
             d.append(c);
         }
 
@@ -30,7 +30,7 @@ public class AppCrade {
         String b = null;
         Pattern c = Pattern.compile(A2 + "(.*)" + A3);
         Matcher d = c.matcher(a);
-        if(d.find()) {
+        if (d.find()) {
             b = d.group(1);
         }
         return b;
