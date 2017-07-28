@@ -14,26 +14,25 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         URL url = new URL(THE_URL);
-        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
         String line = null;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder rawHtml = new StringBuilder();
 
-        while( (line = br.readLine()) != null) {
-            sb.append(line);
+        while( (line = bufferedReader.readLine()) != null) {
+            rawHtml.append(line);
         }
 
-        String head = getTitle(sb.toString());
-        System.out.println(head);
+        String title = extractTitleFromRawHtml(rawHtml.toString());
+        System.out.println(title);
     }
 
-    private static String getTitle(String s) {
-        String head = "";
-        System.out.println(s);
+    private static String extractTitleFromRawHtml(String rawHtml) {
+        String title = "";
         Pattern pattern = Pattern.compile(OPENING_TAG + "(.*)" + CLOSING_TAG);
-        Matcher matcher = pattern.matcher(s);
+        Matcher matcher = pattern.matcher(rawHtml);
         if(matcher.find()) {
-            head = matcher.group(1);
+            title = matcher.group(1);
         }
-        return head;
+        return title;
     }
 }
