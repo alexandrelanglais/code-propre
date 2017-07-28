@@ -22,11 +22,11 @@ public class AppCrade {
             d.append(c);
         }
 
-        String e = faitQuelqueChose(d.toString());
+        String e = doSomeShit(d.toString());
         System.out.println(e);
     }
 
-    private static String faitQuelqueChose(String a) {
+    private static String doSomeShit(String a) {
         String b = null;
         Pattern c = Pattern.compile(A2 + "(.*)" + A3);
         Matcher d = c.matcher(a);
